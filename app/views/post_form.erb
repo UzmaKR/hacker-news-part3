@@ -1,0 +1,23 @@
+<div class="container">
+
+  <h1>Make your post!</h1>
+
+  <% if @post && @post.errors.any? %>
+      <% @post.errors.full_messages.each do |msg| %>
+              <%= msg %>
+      <% end %>
+  <% end %>
+
+   
+
+  <form action='/post/create' method='post' value='post' >
+      <input type='hidden' name='post[user_id]' value="<%= current_user.id %>" >
+      <b>Title:</b></br>
+      <input type='text' name='post[title]' placeholder='Title'>
+
+      <b>URL:</b></br>
+      <input type='text' name='post[url]' placeholder='Url'></br></br>
+      <input type='submit' value="Create new post" >
+  </form>
+  
+</div>

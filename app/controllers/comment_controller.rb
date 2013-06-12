@@ -1,5 +1,8 @@
 
 post '/comment/create' do
 
-  redirect '/post/:id'
+  @comment = Comment.new(params[:comment])
+  @comment.save
+  redirect "/post/#{params[:comment][:post_id]}"
+
 end

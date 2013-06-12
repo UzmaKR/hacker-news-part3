@@ -1,0 +1,25 @@
+<div class="container">
+  
+
+  <% if @comment && @comment.errors.any? %>
+      <% @comment.errors.full_messages do |msg| %>
+          <%= msg %>
+      <% end %>
+  <% end %>
+
+  <h1>Post <%= @post.id %></h1>
+
+      <b>Title:</b></br>
+      <%= @post.title %>
+
+      <b>URL:</b></br>
+      <%= @post.url %>
+
+      <form action='/comment/create' method='post' name='comment'> 
+      <input type="hidden" name='comment[post_id]' value="<%= @post.id %>" >
+      <input type="hidden" name='comment[user_id]' value="<%= current_user.id %>">
+      <input type="text" name='comment[content]' placeholder="Comment" >
+      <input type='submit' value="Add comment" >
+      </form>
+  
+</div>

@@ -1,4 +1,7 @@
 get '/' do
-  # all posts
+  
+  #get all posts
+  @post = Post.all
+
   erb :index
 end

@@ -18,6 +18,9 @@
   <title></title>
 </head>
 <body>
+  <% if current_user %>
+    <%= current_user.email %> logged in
+  <% end %> 
   <%= yield %>
 </body>
 </html>
