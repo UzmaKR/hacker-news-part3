@@ -10,10 +10,17 @@
   <h1>Post <%= @post.id %></h1>
 
       <b>Title:</b></br>
-      <%= @post.title %>
+      <%= @post.title %></br>
 
       <b>URL:</b></br>
-      <%= @post.url %>
+      <%= @post.url %></br></br>
+
+      <h4>Comments:</h4>
+      <% @post.comments.each do |comment| %>
+        By <%= comment.user.name %></br>
+           <%= comment.content %></br></br>
+      <% end %>
+
 
       <form action='/comment/create' method='post' name='comment'> 
       <input type="hidden" name='comment[post_id]' value="<%= @post.id %>" >

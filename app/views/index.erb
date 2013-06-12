@@ -4,7 +4,8 @@
   <h2> All Posts: </h2>
     <% @post.each do |post| %>
        <h3> <a href="<%= post.url %>" > <%= post.title %> </a> ( <%= post.url %> ) </h3></br>
-       <h5> <%= post.user.name %> | <%= post.user.comments.count %> comment(s) </h5></br></br>
+       <h5> <%= post.user.name %> | 
+        <a href="/post/<%= post.id %>"> <%= post.comments.count %> comment(s) </h5></br></br>
     <% end %>
   
 </div>

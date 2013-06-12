@@ -6,3 +6,5 @@ post '/comment/create' do
   redirect "/post/#{params[:comment][:post_id]}"
 
 end
+
+
