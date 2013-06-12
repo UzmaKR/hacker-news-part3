@@ -31,6 +31,7 @@ get '/logout' do
 end
 
 get '/login' do
+	redirect '/' if session[:user_id]
 	erb :login
 end
 
