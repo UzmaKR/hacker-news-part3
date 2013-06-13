@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration
         t.text :content
         t.references :user
         t.references :post
+        t.integer :votecount, :default => 0
 
         t.timestamps
     end

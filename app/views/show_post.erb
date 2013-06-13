@@ -8,6 +8,15 @@
   <% end %>
 
   <h1>Post <%= @post.id %></h1>
+  <h3> Votecount: <p id="postvotecount"></p></h3>
+
+       <form id="postform" action='/postvote' method='post' name='post'>
+        <input type="hidden" name='post[post_id]' value="<%= @post.id %>" >
+        <input type="hidden" name='post[user_id]' value="<%= current_user.id %>">
+        <input type="text" id="votevaluepost" name='post[updownvote]' value="0">
+        <input id="upvotepost" type='submit' value="+" >
+        <input id="downvotepost" type='submit' value="-" >
+      </form>
 
       <b>Title:</b></br>
       <%= @post.title %></br>
@@ -17,7 +26,15 @@
 
       <h4>Comments:</h4>
       <% @post.comments.each do |comment| %>
-        By <%= comment.user.name %></br>
+      <form id="commentform" action='/commentvote' method='post' name='comment'>
+        <input type="hidden" name='comment[comment_id]' value="<%= comment.id %>" >
+        <input type="hidden" name='comment[user_id]' value="<%= current_user.id %>">
+        <input type="text" id="votevaluecomment" name='comment[updownvote]' value="0">
+        <input id="upvotecomment" type='submit' value="+" >
+        <input id="downvotecomment" type='submit' value="-" >
+      </form>
+
+        By <%= comment.user.name %> <p id="commentvotecount"></p> </br>
            <%= comment.content %></br></br>
       <% end %>
 
@@ -30,3 +47,5 @@
       </form>
   
 </div>
+
+
